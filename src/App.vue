@@ -1,26 +1,29 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+	<div class="container my-5">
+		<AppButtons color="danger" size="sm">Modal window</AppButtons>
+		<teleport to="body">
+			<AppModal v-if="modal" @close="modal" />
+		</teleport>
+	</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppButtons from "../src/components/AppButtons.vue";
+import AppModal from "../src/components/AppModal.vue";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+	name: "App",
+	components: {
+		AppButtons,
+		AppModal,
+	},
+	data() {
+		return {
+			modal: false,
+		};
+	},
+};
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
