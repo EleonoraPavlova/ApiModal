@@ -1,9 +1,11 @@
 <template>
-	<div class="container my-5">
-		<AppButtons color="danger" size="sm">Modal window</AppButtons>
-		<teleport to="body">
-			<AppModal v-if="modal" @close="modal" />
-		</teleport>
+	<div class="position-relative container py-5">
+		<AppButtons color="danger" size="sm" @click="showModal()">{{
+			isVisibleModal ? "Hide " : "Modal window"
+		}}</AppButtons>
+		<div>
+			<AppModal v-model:show="isVisibleModal" @close="closeModal()" />
+		</div>
 	</div>
 </template>
 
@@ -19,8 +21,17 @@ export default {
 	},
 	data() {
 		return {
-			modal: false,
+			isVisibleModal: false,
 		};
+	},
+	methods: {
+		showModal() {
+			this.isVisibleModal = !this.isVisibleModal;
+		},
+		closeModal() {
+			debugger;
+			this.isVisibleModal = null;
+		},
 	},
 };
 </script>
