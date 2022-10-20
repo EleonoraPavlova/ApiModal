@@ -3,9 +3,8 @@
 		<AppButtons color="danger" size="sm" @click="showModal()">{{
 			isVisibleModal ? "Hide " : "Modal window"
 		}}</AppButtons>
-		<div>
-			<AppModal v-model:show="isVisibleModal" @close="closeModal()" />
-		</div>
+
+		<AppModal v-if="isVisibleModal" @close="closeModal()" />
 	</div>
 </template>
 

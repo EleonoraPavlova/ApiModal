@@ -1,25 +1,18 @@
 <template>
-	<div
-		v-if="show"
-		class="
-			modal
-			d-flex
-			justify-content-center
-			align-items-center
-			position-relative
-		"
-	>
-		<div class="modal-dialog modal-lg">
-			<div class="card p-3">
-				<h3>Title modal</h3>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum
-					corporis, saepe architecto sequi qui repudiandae odit ex maxime
-					voluptas aspernatur.
-				</p>
-				<div class="position-absolute top-0 end-0">
+	<div class="modal d-flex align-items-center position-relative">
+		<div class="modal-dialog modal-lg m-0 px-2">
+			<div class="d-flex">
+				<AppIcon name="cancel" />
+				<h5 class="text-start mb-0">Forms</h5>
+				<div class="">
 					<CloseButton class="btn-close" size="xs" @click="$emit('close')" />
 				</div>
+			</div>
+
+			<hr class="mt-2" />
+			<div class="d-flex justify-content-between align-items-center">
+				<CardLeft />
+				<CardRight />
 			</div>
 		</div>
 	</div>
@@ -27,11 +20,17 @@
 
 <script>
 import CloseButton from "../components/CloseButton.vue";
+import AppIcon from "../components/AppIcon.vue";
+import CardRight from "../components/CardRight.vue";
+import CardLeft from "../components/CardLeft.vue";
 
 export default {
 	name: "AppModal",
 	components: {
 		CloseButton,
+		AppIcon,
+		CardRight,
+		CardLeft,
 	},
 	props: {
 		show: {
@@ -46,15 +45,18 @@ export default {
 
 <style lang="scss" scoped>
 .modal {
-	position: fixed;
 	top: 60px;
-	width: 600px;
+	width: 72%;
+	height: 50%;
 	padding: 1rem;
-	background: #fff;
+	background: rgba(6, 32, 55, 1);
 	z-index: 1000;
 	left: 50%;
 	border-radius: 10px;
 	transform: translateX(-50%);
 	box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+}
+.modal-dialog {
+	width: 100% !important;
 }
 </style>

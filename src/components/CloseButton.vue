@@ -1,8 +1,8 @@
 <template>
 	<button
 		type="button"
-		class="btn-close"
-		:class="[color, size]"
+		class="btn-close-white"
+		:class="[size]"
 		aria-label="Close"
 		@click="$emit('click')"
 	/>
@@ -12,10 +12,6 @@
 export default {
 	name: "CloseButton",
 	props: {
-		color: {
-			type: String,
-			default: "primary",
-		},
 		size: {
 			type: String,
 			default: "clxs",
