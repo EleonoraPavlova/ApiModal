@@ -1,20 +1,28 @@
 <template>
 	<div class="vertical-panel d-flex justify-content-center align-items-center">
-		<h6 class="mb-0 me-3">All Forms</h6>
-		<button type="button" class="btn btn-light rounded-circle">
-			<i class="chevron-left" />
+		<h6 class="mb-0 me-2">All Forms</h6>
+		<button type="button" class="btn btn-light bg-white rounded-circle">
+			<AppIcon name="chevron-up" color="bg-transparent" size="xs" />
 		</button>
 	</div>
 </template>
 
 <script>
+import AppIcon from "../components/AppIcon.vue";
+
 export default {
 	name: "AppSeparator",
+	components: {
+		AppIcon,
+	},
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .vertical-panel {
-	transform: translate(270px) rotate(-90deg);
+	transform: translate(270px, -35px) rotate(-91deg);
+}
+.btn {
+	padding: 0;
 }
 </style>

@@ -1,9 +1,5 @@
 <template>
-	<i
-		:class="[size, 'mdi', `mdi-${name}`]"
-		:style="{ color: color }"
-		class="md"
-	/>
+	<i :class="[size, 'mdi', `mdi-${name}`]" :style="{ color: color }" />
 </template>
 
 <script>
@@ -20,7 +16,7 @@ export default {
 		},
 		size: {
 			type: String,
-			default: "lg",
+			default: "md",
 		},
 	},
 };

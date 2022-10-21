@@ -67,6 +67,9 @@ li {
 .black {
   color: black;
 }
+.color-modal {
+  color: #0f528c;
+}
 
 .xs {
   width: 15px;

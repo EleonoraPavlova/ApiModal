@@ -28,3 +28,9 @@ export default {
 	emits: ["click"],
 };
 </script>
+
+<style lang="scss">
+.btn:hover {
+	color: white;
+}
+</style>

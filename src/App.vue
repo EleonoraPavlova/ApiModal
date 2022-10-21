@@ -1,10 +1,10 @@
 <template>
-	<div class="position-relative container py-5">
+	<div class="container py-5">
 		<AppButtons color="danger" size="sm" @click="showModal()">{{
 			isVisibleModal ? "Hide " : "Modal window"
 		}}</AppButtons>
 
-		<AppModal v-if="isVisibleModal" @close="closeModal()" />
+		<AppModal v-if="isVisibleModal" @close="isVisibleModal = null" />
 	</div>
 </template>
 
@@ -26,10 +26,6 @@ export default {
 	methods: {
 		showModal() {
 			this.isVisibleModal = !this.isVisibleModal;
-		},
-		closeModal() {
-			debugger;
-			this.isVisibleModal = null;
 		},
 	},
 };

@@ -1,9 +1,13 @@
 <template>
 	<div class="modal d-flex align-items-center position-relative">
-		<div class="modal-dialog modal-lg m-0 px-2">
-			<div class="d-flex">
-				<AppIcon name="cancel" />
-				<h5 class="text-start mb-0">Forms</h5>
+		<div class="m-0 px-2 width100">
+			<div class="d-flex justify-content-between align-items-center">
+				<div class="d-flex">
+					<div class="me-2">
+						<AppIcon name="ab-testing" />
+					</div>
+					<h5 class="mb-0">Forms</h5>
+				</div>
 				<div class="">
 					<CloseButton class="btn-close" size="xs" @click="$emit('close')" />
 				</div>
@@ -56,7 +60,7 @@ export default {
 	transform: translateX(-50%);
 	box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
 }
-.modal-dialog {
-	width: 100% !important;
+.width100 {
+	width: 100%;
 }
 </style>
