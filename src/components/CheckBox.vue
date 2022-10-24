@@ -12,7 +12,7 @@
 			:for="id"
 			class="flex flex-row items-center font-bold cursor-pointer"
 		>
-			{{ label }}
+			{{ name }}
 		</label>
 	</div>
 </template>
@@ -21,13 +21,12 @@
 export default {
 	name: "CheckBox",
 	props: {
-		label: {
+		name: {
 			type: String,
 			default: "",
 		},
 		id: {
-			type: Number,
-			required: true,
+			type: String,
 		},
 		modelValue: {
 			type: Boolean,

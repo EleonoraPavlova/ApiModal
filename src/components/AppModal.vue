@@ -14,7 +14,7 @@
 			</div>
 
 			<hr class="mt-2" />
-			<div class="d-flex justify-content-between align-items-center">
+			<div class="d-flex justify-content-between align-items-start">
 				<CardLeft />
 				<CardRight />
 			</div>
@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
 .modal {
 	top: 60px;
-	width: 72%;
+	width: 77%;
 	height: 50%;
 	padding: 1rem;
 	background: rgba(6, 32, 55, 1);

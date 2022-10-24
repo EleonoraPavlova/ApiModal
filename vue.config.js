@@ -2,7 +2,7 @@ const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: process.env.NODE_ENV === "production" ? "/ApiModal/" : "/",
-  // if has been blocked by CORS policy:
+  // if has been blocked by CORS policy: редирект
   devServer: {
     proxy: {
       '^/api/workflow': {
