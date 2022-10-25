@@ -5,13 +5,16 @@
 			:key="list"
 			class="d-flex justify-content-start align-items-center"
 		>
-			<AppSvg class="me-3" />
-			<div class="d-flex justify-content-start align-items-center mb-2">
-				<div v-if="list.type === 'docx'">
-					<AppImage name="file-word" class="ms-2" />
+			<AppSvg />
+			<div class="d-flex justify-content-start align-items-center">
+				<div
+					v-if="list.type === 'docx'"
+					class="d-flex justify-content-center align-items-center"
+				>
+					<AppImage name="file-word" class="mx-2" color="cyan" />
 				</div>
 				<div v-else>
-					<AppImage class="ms-2" />
+					<AppImage class="mx-2" />
 				</div>
 
 				<div class="div">

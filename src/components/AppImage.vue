@@ -12,7 +12,7 @@ export default {
 		},
 		color: {
 			type: String,
-			default: "white",
+			default: "red",
 		},
 		size: {
 			type: String,

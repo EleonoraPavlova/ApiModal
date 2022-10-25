@@ -4,7 +4,7 @@
 			:id="id"
 			:checked="modelValue"
 			type="checkbox"
-			class="me-3"
+			class="me-2"
 			name="checkboxName"
 			@change="updateCheckbox"
 		/>

@@ -1,51 +1,58 @@
 <template>
 	<div class="d-flex justify-content-between align-items-start">
-		<div class="d-flex flex-column">
-			<div class="d-flex align-items-center mb-2">
-				<p class="mb-0">Matter number:</p>
-				<AppInput />
-			</div>
-			<div class="d-flex justify-content-srart">
-				<p class="">HARRITY &amp; HARRITY, LLP</p>
-			</div>
-
-			<div class="mb-3 d-flex justify-content-start align-items-center">
-				<input
-					id="chooseAll"
-					:checked="checked"
-					type="checkbox"
-					class="me-3"
-					@input="chooseAllSkills"
-				/>
-				<label
-					for="chooseAll"
-					class="flex flex-row items-center font-bold cursor-pointer"
-				>
-					Select all forms</label
-				>
-			</div>
-			<div
-				v-for="file in files"
-				:key="file"
-				class="d-flex flex-column align-items-start mb-3"
-			>
-				<CheckBox :name="file.name" :id="file.id" v-model="file.isSelected" />
-				<div v-if="file.type === 'docx'">
-					<AppImage name="file-word" />
+		<div class="d-flex align-items-start flex-column mb-3">
+			<div class="mb-2 height">
+				<div class="d-flex align-items-center mb-2">
+					<p class="mb-0">Matter number:</p>
+					<AppInput />
 				</div>
-				<div v-else>
-					<AppImage />
+				<div class="d-flex justify-content-srart">
+					<p class="">HARRITY &amp; HARRITY, LLP</p>
+				</div>
+
+				<div class="mb-3 d-flex justify-content-start align-items-center">
+					<input
+						id="chooseAll"
+						:checked="checked"
+						type="checkbox"
+						class="me-2"
+						@input="chooseAll"
+					/>
+					<label
+						for="chooseAll"
+						class="flex flex-row items-center font-bold cursor-pointer"
+					>
+						Select all forms</label
+					>
+				</div>
+				<div
+					v-for="file in files"
+					:key="file"
+					class="d-flex align-items-center mb-2"
+				>
+					<div v-if="file.type === 'docx'">
+						<AppImage name="file-word" color="cyan" class="me-2" />
+					</div>
+					<div v-else>
+						<AppImage class="me-2" />
+					</div>
+					<CheckBox
+						:name="file.name"
+						:id="file.id"
+						v-model="file.isSelected"
+					></CheckBox>
 				</div>
 			</div>
-
-			<div class="d-flex justify-content-between align-items-center">
+			<div class="p-2">
 				<CheckBox name="Skip cache" id="skip" v-model="skipCache" />
-				<AppButtons class="bg-transparent btn-outline-info" size="md"
-					>Generate</AppButtons
-				>
 			</div>
 		</div>
-		<AppSeparator />
+		<div class="d-flex flex-column align-items-center mb-3">
+			<AppSeparator class="stretch-height" @click="$emit('show')" />
+			<AppButtons class="bg-transparent btn-outline-info" size="md"
+				>Generate</AppButtons
+			>
+		</div>
 	</div>
 </template>
 
@@ -75,6 +82,7 @@ export default {
 			skipCache: false,
 		};
 	},
+	emits: ["show"],
 	async created() {
 		await this.GetForms();
 	},
@@ -100,9 +108,19 @@ export default {
 					throw new Error(e);
 				});
 		},
+		chooseAll() {
+			this.checked = !this.checked;
+			this.files.forEach((item) => (item.isSelected = this.checked));
+		},
 	},
 };
 </script>
 
-<style>
+<style lang="scss">
+.height {
+	height: 450px;
+}
+.stretch-height {
+	height: 414px;
+}
 </style>
