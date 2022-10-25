@@ -20,7 +20,10 @@
 
 			<hr class="mt-2" />
 			<div class="d-flex justify-content-between align-items-start">
-				<CardLeft @show="showAllForms" />
+				<CardLeft
+					@show="showAllForms"
+					@formGenerated="$emit('formGenerated', $event)"
+				/>
 				<CardRight v-if="isVisible" />
 			</div>
 		</div>
@@ -46,7 +49,7 @@ export default {
 			isVisible: false,
 		};
 	},
-	emits: ["close"],
+	emits: ["close", "formGenerated"],
 	methods: {
 		showAllForms() {
 			this.isVisible = !this.isVisible;

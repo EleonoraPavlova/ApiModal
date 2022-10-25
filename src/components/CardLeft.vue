@@ -39,8 +39,10 @@
 					<CheckBox
 						:name="file.name"
 						:id="file.id"
-						v-model="file.isSelected"
-					></CheckBox>
+						:modelValue="selected.includes(file.name)"
+						@update:modelValue="toggle(file.name)"
+					/>
+					<!-- сохраняю id в selected, чтобы вывести массив выбранных CheckBox -->
 				</div>
 			</div>
 			<div class="p-2">
@@ -49,7 +51,10 @@
 		</div>
 		<div class="d-flex flex-column align-items-center mb-3">
 			<AppSeparator class="stretch-height" @click="$emit('show')" />
-			<AppButtons class="bg-transparent btn-outline-info" size="md"
+			<AppButtons
+				class="bg-transparent btn-outline-info"
+				size="md"
+				@click="$emit('formGenerated', selected)"
 				>Generate</AppButtons
 			>
 		</div>
@@ -77,12 +82,12 @@ export default {
 		return {
 			files: [],
 			type: "",
-			isSelected: false,
+			selected: [],
 			checked: false,
 			skipCache: false,
 		};
 	},
-	emits: ["show"],
+	emits: ["show", "formGenerated"],
 	async created() {
 		await this.GetForms();
 	},
@@ -110,7 +115,16 @@ export default {
 		},
 		chooseAll() {
 			this.checked = !this.checked;
-			this.files.forEach((item) => (item.isSelected = this.checked));
+			this.checked = this.selected.map((item) => item.id);
+		},
+		toggle(id) {
+			//выбираем элементы по клику на checkbox
+			const index = this.selected.indexOf(id);
+			if (index > -1) {
+				this.selected.splice(index, 1);
+			} else {
+				this.selected.push(id);
+			}
 		},
 	},
 };
