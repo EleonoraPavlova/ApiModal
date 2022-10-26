@@ -34,6 +34,7 @@ export default {
 		},
 	},
 	emits: ["update:modelValue"],
+
 	methods: {
 		updateCheckbox() {
 			this.$emit("update:modelValue", !this.modelValue);

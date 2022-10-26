@@ -13,7 +13,7 @@
 				<div class="mb-3 d-flex justify-content-start align-items-center">
 					<input
 						id="chooseAll"
-						:checked="checked"
+						:checked="allSelected"
 						type="checkbox"
 						class="me-2"
 						@input="chooseAll"
@@ -39,8 +39,8 @@
 					<CheckBox
 						:name="file.name"
 						:id="file.id"
-						:modelValue="selected.includes(file.name)"
-						@update:modelValue="toggle(file.name)"
+						:modelValue="selected.includes(file.id)"
+						@update:modelValue="toggle(file.id)"
 					/>
 					<!-- сохраняю id в selected, чтобы вывести массив выбранных CheckBox -->
 				</div>
@@ -83,13 +83,17 @@ export default {
 			files: [],
 			type: "",
 			selected: [],
-			checked: false,
 			skipCache: false,
 		};
 	},
 	emits: ["show", "formGenerated"],
 	async created() {
 		await this.GetForms();
+	},
+	computed: {
+		allSelected() {
+			return this.files.every((item) => this.selected.includes(item.id));
+		},
 	},
 	methods: {
 		async GetForms() {
@@ -114,8 +118,11 @@ export default {
 				});
 		},
 		chooseAll() {
-			this.checked = !this.checked;
-			this.checked = this.selected.map((item) => item.id);
+			if (this.allSelected) {
+				this.selected = [];
+			} else {
+				this.selected = this.files.map((item) => item.id);
+			}
 		},
 		toggle(id) {
 			//выбираем элементы по клику на checkbox
