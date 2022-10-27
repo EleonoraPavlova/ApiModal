@@ -52,12 +52,8 @@ export default {
 				this.show = false;
 				this.showAnything = true;
 			}
-
-			console.log(value);
 		},
 	},
 };
 </script>
 
-<style lang="scss">
-</style>

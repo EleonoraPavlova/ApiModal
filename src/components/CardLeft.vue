@@ -106,7 +106,6 @@ export default {
 				})
 				.then((response) => {
 					this.files = response.data.data;
-					console.log(this.files);
 					if (this.type === "docx") {
 						return "docx";
 					} else {

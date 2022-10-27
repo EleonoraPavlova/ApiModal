@@ -56,7 +56,6 @@ export default {
 				})
 				.then((response) => {
 					this.lists = response.data.data;
-					console.log(this.lists);
 					if (this.type === "docx") {
 						return "docx";
 					} else {
@@ -70,6 +69,3 @@ export default {
 	},
 };
 </script>
-
-<style>
-</style>
